@@ -10,7 +10,7 @@ describe "Plane" do
 	end
 
 	it 'status is "flying" when flying' do
-		expect(new_plane.status?).to eq "flying"
+		expect(new_plane.status).to eq "flying"
 	end
 
 	it 'can land' do
@@ -18,7 +18,7 @@ describe "Plane" do
 	end
 
 	it 'status is "landed" when landed' do
-		expect(landed_plane.status?).to eq "landed"
+		expect(landed_plane.status).to eq "landed"
 	end
 
 	it 'can take off' do
@@ -26,7 +26,7 @@ describe "Plane" do
 	end
 
 	it 'can take off and land multiple times' do
-		expect(new_plane.take_off!.land!.take_off!.land!.status?).to eq "landed"
+		expect(new_plane.take_off!.land!.take_off!.land!.status).to eq "landed"
 	end
 
 

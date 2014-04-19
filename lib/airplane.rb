@@ -8,7 +8,7 @@ class Plane
 		@flying
 	end
 
-	def status?
+	def status
 		
 		if @flying == true
 			return "flying"
