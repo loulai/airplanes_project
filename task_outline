@@ -1,0 +1,19 @@
+task outline:
+
+ - Write software that controls the flow of planes at an airport.
+ - The weather is usually sunny and only occasionally stormy.
+ - Planes can only take off when it's sunny.
+ - Every plane needs to have a status indicator (flying/not flying)
+
+
+ code specific things:
+
+ 	- need to use random number generator to set weather
+ 	- need to use double to override random weather
+ 	- separate file for each class, module & test suite
+
+ judged on:
+
+ 	- tests pass
+ 	- coverage
+ 	- elegance: class has clear responsibility, short methods
