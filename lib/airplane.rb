@@ -1,17 +1,33 @@
 class Plane 
 
 	def initialize
-		@status = "flying"
+		@flying = true
+	end
+
+	def flying?
+		@flying
 	end
 
 	def status?
-		@status
+		if @flying == true
+			return "flying"
+		end
 	end
 
 	def land! 
-		@status = "landed"
-		self #need otherwise will just return the string "landed"
+		@flying = false
+		self
 	end
+
+	#attr_accessor :flying
+
+	# def flying
+	# 	@flying
+	# end
+
+	# def flying=(flying)
+	# 	@flying = flying
+	# end
 
 
 end
