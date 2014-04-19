@@ -6,24 +6,28 @@ describe "Plane" do
 	let(:landed_plane) {Plane.new.land!}
 
 	it 'is flying when created' do
-		expect(Plane.new.flying?).to be_true
+		expect(Plane.new.flying?).to eq true
 	end
 
-	it 'has status "flying" when flying' do
+	it 'status is "flying" when flying' do
 		expect(new_plane.status?).to eq "flying"
 	end
 
 	it 'can land' do
-		expect(landed_plane.flying?).to be_false
+		expect(landed_plane.flying?).to eq false
 	end
 
-	it 'has status "landed" when landed' do
+	it 'status is "landed" when landed' do
+		expect(landed_plane.status?).to eq "landed"
 	end
 
+	it 'can take off' do
+		expect(landed_plane.take_off!.flying?).to eq true
+	end
 
-
-
-
+	it 'can take off and land multiple times' do
+		expect(new_plane.take_off!.land!.take_off!.land!.status?).to eq "landed"
+	end
 
 
 
@@ -36,7 +40,8 @@ describe "Plane" do
 
 end
 
-
+#i think i need to reorder these tests
+#they make sense but doesn't look beautiful
 
 
 #decided to land first because, well, 

@@ -9,8 +9,13 @@ class Plane
 	end
 
 	def status?
+		
 		if @flying == true
 			return "flying"
+
+		else
+			"landed"
+		
 		end
 	end
 
@@ -19,6 +24,10 @@ class Plane
 		self
 	end
 
+	def take_off!
+		@flying = true
+		self
+	end
 	#attr_accessor :flying
 
 	# def flying
