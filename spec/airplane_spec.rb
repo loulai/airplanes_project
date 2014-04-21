@@ -8,15 +8,23 @@ describe "Plane" do
 	let(:landed_plane) {Plane.new.land!}
 
 	it 'is flying when created' do
-		expect(Plane.new.flying?).to eq true
+		expect(new_plane.flying?).to eq true
 	end
 
 	it 'status is "flying" when flying' do
 		expect(new_plane.status).to eq "flying"
 	end
 
+	it "cannot take off if already flying" do
+		expect{new_plane.take_off!}.to raise_error(RuntimeError)
+	end
+
 	it 'can land' do
 		expect(landed_plane.flying?).to eq false
+	end
+
+	it 'cannot land if it is already landed' do
+		expect{landed_plane.land!}.to raise_error(RuntimeError)
 	end
 
 	it 'status is "landed" when landed' do

@@ -35,6 +35,7 @@ class Airport
 	end
 
 	def take_off!(plane)
+		raise "Cannot take off due to weather conditions!" unless sunny?
 		planes.delete(plane)
 	end
 

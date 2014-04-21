@@ -25,3 +25,4 @@ task outline:
  def sunny?
  	[true, true, true, false].sample
  end
+ 

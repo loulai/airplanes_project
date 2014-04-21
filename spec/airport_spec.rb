@@ -61,8 +61,9 @@ describe "Airport" do
 			expect{airport.park!(:plane)}.to raise_error(RuntimeError)
 		end
 
-		
-
+		it "planes cannot take off if it's not sunny" do 
+			expect{airport.take_off!(:plane)}.to raise_error(RuntimeError)
+		end
 
 	end
 

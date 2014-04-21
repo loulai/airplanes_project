@@ -15,11 +15,11 @@ class Plane
 
 		else
 			"landed"
-		
 		end
 	end
 
 	def land! 
+		raise "You've already landed, you moron." unless flying?
 		@flying = false
 		self
 	end
