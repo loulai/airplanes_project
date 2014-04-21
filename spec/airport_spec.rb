@@ -67,8 +67,20 @@ describe "Airport" do
 
 	end
 
-end 
+	context 'the grand finale' do
+		
+		before do
+			airport.stub(:sunny?).and_return(true)
+		end
 
+		it "when given six planes, can park all six planes" do
+			6.times{airport.park!(Plane.new)}
+			expect(airport.planes_count).to eq 6
+		end
+
+	end 
+
+end
 
 		# my_plane = double :plane
 		# my_airport = Airport.new
