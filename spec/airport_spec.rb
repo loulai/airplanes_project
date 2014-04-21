@@ -21,7 +21,6 @@ describe "Airport" do
 		end
 
 		it 'has one plane after one plane has parked' do
-	
 			airport.park!(plane)
 			expect(airport.planes_count).to eq 1
 		end
