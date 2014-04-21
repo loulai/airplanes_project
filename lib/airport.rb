@@ -1,4 +1,5 @@
-require_relative 'weather'
+require_relative './plane'
+require_relative './weather'
 
 class Airport
 
@@ -27,16 +28,17 @@ class Airport
 		raise "You can not land due to weather conditions !!!" unless sunny?
 		raise "Airport is full" if full?
 		planes << plane
-		
+		plane.land!		
 	end
 
 	def has_plane?
 		@airport_bay.any?
 	end
 
-	def take_off!(plane)
+	def dispatch!(plane)
 		raise "Cannot take off due to weather conditions!" unless sunny?
 		planes.delete(plane)
+		plane.take_off!
 	end
 
 	def planes
@@ -48,3 +50,4 @@ class Airport
 	end
 
 end
+

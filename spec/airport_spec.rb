@@ -1,4 +1,5 @@
 require "airport"
+require "plane"
 
 describe "Airport" do 
 
@@ -7,6 +8,7 @@ describe "Airport" do
 	end
 
 	let (:airport) {Airport.new}
+	let (:plane) {Plane.new}
 
 	context 'taking off and parking' do
 
@@ -19,15 +21,14 @@ describe "Airport" do
 		end
 
 		it 'has one plane after one plane has parked' do
-			fake_plane = double :plane
-			airport.park!(fake_plane)
+	
+			airport.park!(plane)
 			expect(airport.planes_count).to eq 1
 		end
 
 		it 'has zero planes after one plane has taken off' do
-			fake_plane = double :plane
-			airport.park!(fake_plane)
-			airport.take_off!(fake_plane)
+			airport.park!(plane)
+			airport.dispatch!(plane)
 			expect(airport.planes_count).to eq 0
 		end
 
@@ -36,13 +37,13 @@ describe "Airport" do
 	context 'traffic control' do
 
 			it "knows when it's full (the max capacity has been reached)" do
-				airport.capacity.times { airport.park!(:plane) }
+				airport.capacity.times { airport.park!(Plane.new) }
 				expect(airport).to be_full
 			end
 		
 			it 'a plane cannot land if the airport is full' do
-				airport.capacity.times { airport.park!(:plane) }
-				expect(lambda {airport.park!(:plane)}).to raise_error(RuntimeError)
+				airport.capacity.times { airport.park!(Plane.new) }
+				expect(lambda {airport.park!(Plane.new)}).to raise_error(RuntimeError)
 			end
 
 	end
@@ -58,11 +59,11 @@ describe "Airport" do
 		end
 
 		it "planes cannot land if it's not sunny" do
-			expect{airport.park!(:plane)}.to raise_error(RuntimeError)
+			expect{airport.park!(plane)}.to raise_error(RuntimeError)
 		end
 
 		it "planes cannot take off if it's not sunny" do 
-			expect{airport.take_off!(:plane)}.to raise_error(RuntimeError)
+			expect{airport.dispatch!(plane)}.to raise_error(RuntimeError)
 		end
 
 	end
