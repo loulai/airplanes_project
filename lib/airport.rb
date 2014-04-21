@@ -1,4 +1,8 @@
+require_relative 'weather'
+
 class Airport
+
+	include Weather
 
 	MAX_CAPACITY	= 6
 
@@ -20,8 +24,10 @@ class Airport
 	end
 
 	def park!(plane)
+		raise "You can not land due to weather conditions !!!" unless sunny?
 		raise "Airport is full" if full?
-		@airport_bay << plane
+		planes << plane
+		
 	end
 
 	def has_plane?
@@ -39,6 +45,5 @@ class Airport
 	def planes_count
 		@airport_bay.count
 	end
-
 
 end

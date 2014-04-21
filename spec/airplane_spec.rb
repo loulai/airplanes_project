@@ -1,4 +1,6 @@
-require "airplane"
+# require "airplane"
+require_relative '../lib/airplane'
+
 
 describe "Plane" do
 

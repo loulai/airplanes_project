@@ -20,3 +20,8 @@ task outline:
 
  PLANES 
  - are made in the air. Not in the airport.
+
+
+ def sunny?
+ 	[true, true, true, false].sample
+ end

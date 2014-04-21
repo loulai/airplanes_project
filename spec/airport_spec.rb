@@ -2,6 +2,10 @@ require "airport"
 
 describe "Airport" do 
 
+	before do
+		airport.stub(:sunny?).and_return(true)
+	end
+
 	let (:airport) {Airport.new}
 
 	context 'taking off and parking' do
@@ -27,6 +31,8 @@ describe "Airport" do
 			expect(airport.planes_count).to eq 0
 		end
 
+	end
+
 	context 'traffic control' do
 
 			it "knows when it's full (the max capacity has been reached)" do
@@ -40,6 +46,27 @@ describe "Airport" do
 			end
 
 	end
+
+	context 'weather restrictions' do
+
+		before do
+			airport.stub(:sunny?).and_return(false)
+		end
+
+		it "the airport knows if it's stormy or sunny" do
+			expect(airport.sunny?).to be_false
+		end
+
+		it "planes cannot land if it's not sunny" do
+			expect{airport.park!(:plane)}.to raise_error(RuntimeError)
+		end
+
+		
+
+
+	end
+
+end 
 
 
 		# my_plane = double :plane
@@ -59,11 +86,4 @@ describe "Airport" do
 		# 	airport_with_one_plane = Airport.new([fake_plane, fake_plane, fake_plane])
 		# expect(airport_with_one_plane.take_off!(2).count).to eq 1
 
-
-
-
-		
-	
-end
-
-#("") is duck typing
+		#("") is duck typing
