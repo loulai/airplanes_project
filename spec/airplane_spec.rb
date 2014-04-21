@@ -36,7 +36,7 @@ describe "Plane" do
 	end
 
 	it 'can take off and land multiple times' do
-		expect(new_plane.take_off!.land!.take_off!.land!.status).to eq "landed"
+		expect(new_plane.land!.take_off!.land!.status).to eq "landed"
 	end
 
 

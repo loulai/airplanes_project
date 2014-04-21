@@ -25,6 +25,7 @@ class Plane
 	end
 
 	def take_off!
+		raise "Silly pilot, why are you trying to take off when you're already flying?" if flying?
 		@flying = true
 		self
 	end
