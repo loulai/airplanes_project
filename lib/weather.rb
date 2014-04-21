@@ -1,7 +1,7 @@
 module Weather
 
 	def sunny?
-		[true, true, true, true, false].sample
+		rand(10) > 3
 	end
 
 end
