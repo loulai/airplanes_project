@@ -79,8 +79,8 @@ describe "Airport" do
 		end
 
 		it "when airport is full, all planes dispatch" do
-			full_airport = airport.capacity.times{airport.park!(Plane.new)}
-			full_airport.grand_dispatch!
+			airport.capacity.times{airport.park!(Plane.new)}
+			airport.grand_dispatch!
 			expect(airport.planes_count).to eq 0
 		end
 
