@@ -26,7 +26,7 @@ class Airport
 	def park!(plane)
 		raise "You can not land due to weather conditions !!!" unless sunny?
 		raise "Airport is full" if full?
-		planes << plane
+		airport_bay << plane
 		if plane.flying? == true 
 		 plane.land!	
 		end
@@ -38,7 +38,7 @@ class Airport
 
 	def dispatch!(plane)
 		raise "Cannot take off due to weather conditions!" unless sunny?
-		planes.delete(plane)
+		airport_bay.delete(plane)
 		plane.take_off!
 	end
 
@@ -48,6 +48,15 @@ class Airport
 
 	def planes_count
 		@airport_bay.count
+	end
+
+	def grand_dispatch!
+		shoo_all = airport_bay.each {|each_plane| airport.dispatch!(each_plane) }
+		shoo_all
+	end
+
+	def airport_bay
+		@airport_bay
 	end
 
 end

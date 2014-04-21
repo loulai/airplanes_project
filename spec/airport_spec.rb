@@ -36,7 +36,7 @@ describe "Airport" do
 	context 'traffic control' do
 
 			it "knows when it's full (the max capacity has been reached)" do
-				airport.capacity.times { airport.park!(Plane.new) }
+				airport.capacity.times { airport.park!(Plane.new)}
 				expect(airport).to be_full
 			end
 		
@@ -77,6 +77,14 @@ describe "Airport" do
 			6.times{airport.park!(Plane.new)}
 			expect(airport.planes_count).to eq 6
 		end
+
+		it "when airport is full, all planes dispatch" do
+			full_airport = airport.capacity.times{airport.park!(Plane.new)}
+			full_airport.grand_dispatch!
+			expect(airport.planes_count).to eq 0
+		end
+
+
 
 	end 
 
