@@ -1,14 +1,14 @@
 class Airport
 
-	def grab(plane)
-		
+	def initialize(something = [])
+		@airport_bay = something
 	end
 
 	def park!
 	end
 
-	def empty?
-		true
+	def has_plane?
+		@airport_bay.any?
 	end
 
 
