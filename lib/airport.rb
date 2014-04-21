@@ -27,7 +27,9 @@ class Airport
 		raise "You can not land due to weather conditions !!!" unless sunny?
 		raise "Airport is full" if full?
 		planes << plane
-		plane.land!		
+		if plane.flying? == true 
+		 plane.land!	
+		end
 	end
 
 	def has_plane?
