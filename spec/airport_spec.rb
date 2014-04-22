@@ -1,5 +1,6 @@
 require "airport"
 require "plane"
+require "weather"
 
 describe "Airport" do 
 
@@ -47,7 +48,7 @@ describe "Airport" do
 
 	end
 
-	context 'weather restrictions' do
+	context 'weather restrictions: not sunny' do
 
 		before do
 			airport.stub(:sunny?).and_return(false)
@@ -64,6 +65,28 @@ describe "Airport" do
 		it "planes cannot take off if it's not sunny" do 
 			expect{airport.dispatch!(plane)}.to raise_error(RuntimeError)
 		end
+
+	end
+
+	
+
+	context 'weather restrictions: stormy' do 
+
+		before do
+			airport.stub(:stormy?).and_return(true)
+		end
+
+		it "planes cannot dispatch if its stormy" do
+			expect{airport.dispatch!(plane)}.to raise_error(RuntimeError)
+		end
+
+		it "planes cannot park if its stormy" do
+			expect{airport.park!(plane)}.to raise_error(RuntimeError)
+		end
+
+
+
+
 
 	end
 

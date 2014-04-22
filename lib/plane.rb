@@ -9,7 +9,6 @@ class Plane
 	end
 
 	def status
-		
 		if @flying == true
 			return "flying"
 
@@ -29,6 +28,5 @@ class Plane
 		@flying = true
 		self
 	end
-
 
 end

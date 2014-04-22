@@ -24,7 +24,7 @@ class Airport
 	end
 
 	def park!(plane)
-		raise "You can not land due to weather conditions !!!" unless sunny?
+		raise "You cannot park due to weather conditions !!!" if stormy?
 		raise "Airport is full" if full?
 		@airport_bay << plane
 		if plane.flying? == true 
