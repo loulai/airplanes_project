@@ -83,8 +83,6 @@ describe "Airport" do
 			expect(airport.planes_count).to eq 0
 		end
 
-
-
 	end 
 
 end

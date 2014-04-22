@@ -51,8 +51,9 @@ class Airport
 	end
 
 	def grand_dispatch!
-		dispatch_lamb = ->(each_plane) {airport.dispatch!(each_plane)}
-		shoo_all = airport_bay.each(&dispatch_lamb)
+		#	{|x| airport.dispatch!(x)}
+		dispatch_lamb = ->(each_plane) {self.dispatch!(each_plane)}
+		shoo_all = self.airport_bay.each(&dispatch_lamb)
 		shoo_all
 	end
 
