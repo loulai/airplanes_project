@@ -29,15 +29,6 @@ class Plane
 		@flying = true
 		self
 	end
-	#attr_accessor :flying
-
-	# def flying
-	# 	@flying
-	# end
-
-	# def flying=(flying)
-	# 	@flying = flying
-	# end
 
 
 end

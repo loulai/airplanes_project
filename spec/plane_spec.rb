@@ -25,7 +25,6 @@ describe "Plane" do
 	end
 
 	it 'cannot land if it is already landed' do
-
 		expect{landed_plane.land!}.to raise_error(RuntimeError)
 	end
 
@@ -41,21 +40,9 @@ describe "Plane" do
 		expect(new_plane.land!.take_off!.land!.status).to eq "landed"
 	end
 
-
-
-	
-
-
-
-
-
-
 end
 
 #i think i need to reorder these tests
 #they make sense but doesn't look beautiful
 
 
-#decided to land first because, well, 
-#if it's made in the air then it must
-#first LAND before it can TAKE OFF
