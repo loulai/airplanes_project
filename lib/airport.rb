@@ -1,4 +1,5 @@
-require_relative './weather'
+#if it's relative you don't need the ./
+require_relative 'weather'
 
 class Airport
 
@@ -26,9 +27,13 @@ class Airport
 	def park!(plane)
 		raise "You cannot park due to weather conditions !!!" if stormy?
 		raise "Airport is full" if full?
+		# what if the plane does not land
+		# shouldn't it be in the @airport_bay after it has landed?
 		@airport_bay << plane
-		if plane.flying? == true 
-		 plane.land!	
+
+		# if the plane is flying shouldn't this be a guard clause like full and stormy
+		if plane.flying? == true
+		 plane.land!
 		end
 	end
 
@@ -38,6 +43,7 @@ class Airport
 
 	def dispatch!(plane)
 		raise "Cannot take off due to weather conditions!" unless sunny?
+		# what it the plane fails to take of?
 		@airport_bay.delete(plane)
 		plane.take_off!
 	end
@@ -51,7 +57,12 @@ class Airport
 	end
 
 	def grand_dispatch!
-		#	{|x| airport.dispatch!(x)}
+		#	{|x| airport.dispatch!(x)}  WHAT IS THIS REMOVE IT!
+
+		# shoo all wtf!!
+		# the lamb (or lambda) is not reused, it is more idomatic to just do
+		# airport_bay.each {|plane| dispatch!(plane)}
+
 		dispatch_lamb = ->(each_plane) {self.dispatch!(each_plane)}
 		shoo_all = self.airport_bay.each(&dispatch_lamb)
 		shoo_all

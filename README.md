@@ -1,3 +1,9 @@
+PASS
+
+Fix your indentation and spacing
+Remove spurious comments
+Be mindful of your language, be descriptive and expresive with variables and arguments rather than terse
+
 Airplanes Project
 ==============
 
@@ -11,3 +17,4 @@ More details can be found in the task_outline file.
 The program is written in Ruby and is test driven.
 
 At this stage, I am finishing my third week of learning Ruby at Makers Academy.
+
