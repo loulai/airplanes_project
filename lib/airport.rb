@@ -11,14 +11,8 @@ class Airport
 		@capacity    = capacity
 		@airport_bay = []
 	end
-
-	def capacity
-		@capacity
-	end
-
-	def capacity=(new_value)
-		@capacity = new_value
-	end
+	
+	attr_accessor :capacity
 
 	def full?
 		planes_count == MAX_CAPACITY
@@ -34,12 +28,11 @@ class Airport
 		raise "Airport is full" if full?
 		# what if the plane does not land
 		# shouldn't it be in the @airport_bay after it has landed?
-		@airport_bay << plane
-
 		# if the plane is flying shouldn't this be a guard clause like full and stormy
-		if plane.flying? == true
+
 		 plane.land!
-		end
+
+		 @airport_bay << plane
 	end
 
 	def has_plane?
@@ -62,16 +55,22 @@ class Airport
 	end
 
 	def grand_dispatch!
-		#	{|x| airport.dispatch!(x)}  WHAT IS THIS REMOVE IT!
-
 		# shoo all wtf!!
 		# the lamb (or lambda) is not reused, it is more idomatic to just do
 		# airport_bay.each {|plane| dispatch!(plane)}
-
-		dispatch_lamb = ->(each_plane) {self.dispatch!(each_plane)}
-		shoo_all = self.airport_bay.each(&dispatch_lamb)
-		shoo_all
+		# airport_bay.each { |each_plane| take_off!(each_plane) }
+		while has_plane?
+			dispatch!(airport_bay.first)
+		end
 	end
 
 end
 
+
+# def capacity
+	# 	@capacity
+	# end
+
+	# def capacity=(capa)
+	# 	@capacity = new_value
+	# end

@@ -68,7 +68,6 @@ describe "Airport" do
 
 	end
 
-	
 
 	context 'weather restrictions: stormy' do 
 
@@ -83,9 +82,6 @@ describe "Airport" do
 		it "planes cannot park if its stormy" do
 			expect{airport.park!(plane)}.to raise_error(RuntimeError)
 		end
-
-
-
 
 
 	end
@@ -109,22 +105,3 @@ describe "Airport" do
 	end 
 
 end
-
-		# my_plane = double :plane
-		# my_airport = Airport.new
-		# expect(my_airport).to be_empty
-		# my_airport.grab(my_plane)
-		# expect(my_airport.planes_count).to eq 1
-
-		# it 'has two planes after another plane has parked' do
-		# 	fake_plane = double :plane
-		# 	airport_with_one_plane = Airport.new([fake_plane])
-		# 	expect(airport_with_one_plane.park!(fake_plane).count).to eq 2
-		# end
-
-		# it 'has n less plane(s) after n plane(s) has taken off' do
-		# 	fake_plane = double :plane
-		# 	airport_with_one_plane = Airport.new([fake_plane, fake_plane, fake_plane])
-		# expect(airport_with_one_plane.take_off!(2).count).to eq 1
-
-		#("") is duck typing
