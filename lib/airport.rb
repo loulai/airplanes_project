@@ -24,6 +24,11 @@ class Airport
 		planes_count == MAX_CAPACITY
 	end
 
+	# using the bang convention in this instance is incorrect.
+	# the bang is used to indiciate, by convention, that you are changing the state of the airport
+	# when you land a plane you are not changing the state of the airport,
+	# whilst it does have more planes you're not changing the fact the airport
+	# contains planes.
 	def park!(plane)
 		raise "You cannot park due to weather conditions !!!" if stormy?
 		raise "Airport is full" if full?
